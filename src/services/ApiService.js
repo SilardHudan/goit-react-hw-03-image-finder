@@ -13,9 +13,29 @@ export async function getImages(query, page) {
     q: query,
   };
 
-  const response = await axios.get(API_URL, {
-    params: BASE_SEARH_PARAMS,
-  });
+  try {
+    const response = await axios.get(API_URL, {
+      params: BASE_SEARH_PARAMS,
+    })
+    return response.data;
+  } catch (error) {
+    return error;
+    
+  }
+}
 
-  return response.data;
+//   const response = await axios.get(API_URL, {
+//     params: BASE_SEARH_PARAMS,
+//   });
+
+//   return response.data;
+// }
+
+export function normalizeData(data) {
+  return data.map(({ id, webformatURL, largeImageURL, tags }) => ({
+    id,
+    webformatURL,
+    largeImageURL,
+    tags,
+  }));
 }

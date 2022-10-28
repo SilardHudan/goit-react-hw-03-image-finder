@@ -28,3 +28,4 @@ export default Searchbar;
 Searchbar.propTypes = {
   onSubmit: PropTypes.func,
 };
+
